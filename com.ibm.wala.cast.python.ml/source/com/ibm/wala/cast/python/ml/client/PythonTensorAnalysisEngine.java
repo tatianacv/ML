@@ -88,21 +88,14 @@ public class PythonTensorAnalysisEngine extends PythonAnalysisEngine<TensorTypeA
       if (k instanceof LocalPointerKey) {
         LocalPointerKey kk = (LocalPointerKey) k;
         int vn = kk.getValueNumber();
-        CGNode node = kk.getNode();
-        DefUse du = node.getDU();
+        DefUse du = kk.getNode().getDU();
         SSAInstruction inst = du.getDef(vn);
 
         if (inst instanceof SSAAbstractInvokeInstruction) {
           SSAAbstractInvokeInstruction ni = (SSAAbstractInvokeInstruction) inst;
 
-          if (ni.getException() != vn) {
-            if (ni.getCallSite()
-                .getDeclaredTarget()
-                .getName()
-                .toString()
-                .equals("read_data"))
+          if (ni.getCallSite().getDeclaredTarget().getName().toString().equals("read_data") && ni.getException() != vn)
             		sources.add(src);
-          }
         }
       }
     }
