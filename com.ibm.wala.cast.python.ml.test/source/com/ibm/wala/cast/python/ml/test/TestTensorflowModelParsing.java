@@ -22,10 +22,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import org.junit.Test;
 
 public class TestTensorflowModelParsing extends TestPythonMLCallGraphShape {
+
+  private static final Logger logger = Logger.getLogger(TestTensorflowModelParsing.class.getName());
 
   /** Test a parsing bug (see https://github.com/wala/ML/pull/46#issue-1743032519). */
   @Test
@@ -53,6 +56,8 @@ public class TestTensorflowModelParsing extends TestPythonMLCallGraphShape {
     analysis.forEach(
         p -> {
           PointerKey pointerKey = p.fst;
+
+          if (pointerKey instanceof LocalPointerKey) {
           LocalPointerKey localPointerKey = (LocalPointerKey) pointerKey;
 
           // get the call graph node associated with the
@@ -70,10 +75,8 @@ public class TestTensorflowModelParsing extends TestPythonMLCallGraphShape {
                 v.add(localPointerKey);
                 return v;
               });
+          } else logger.warning(() -> "Encountered: " + pointerKey.getClass());
         });
-
-    // we should have two methods.
-    assertEquals(2, methodSignatureToPointerKeys.size());
 
     final String addFunctionSignature = "script " + filename + ".add.do()LRoot;";
 

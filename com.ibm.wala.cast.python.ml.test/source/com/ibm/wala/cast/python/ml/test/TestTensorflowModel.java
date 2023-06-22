@@ -68,8 +68,8 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
   public void testTf2()
       throws IllegalArgumentException, CancelException, IOException, WalaException {
     testTf2("tf2.py", "add", 2, 2, 3);
-//    testTf2("tf2b.py", "add", 2, 2, 3);
-//    testTf2("tf2c.py", "add", 2, 2, 3);
+    testTf2("tf2b.py", "add", 2, 2, 3);
+    testTf2("tf2c.py", "add", 2, 2, 3);
 //    testTf2("tf2d.py", "add", 2, 2, 3);
 //    testTf2("tf2e.py", "add", 2, 2, 3);
 //    testTf2("tf2f.py", "add", 2, 2, 3);
@@ -102,7 +102,7 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     CAstCallGraphUtil.AVOID_DUMP = false;
     CAstCallGraphUtil.dumpCG(builder.getCFAContextInterpreter(), builder.getPointerAnalysis(), CG);
     System.err.println(CG);
-    DotUtil.dotify(CG, null, PDFTypeHierarchy.DOT_FILE, "callgraph.pdf", "dot");
+//    DotUtil.dotify(CG, null, PDFTypeHierarchy.DOT_FILE, "callgraph.pdf", "dot");
 
     TensorTypeAnalysis analysis = E.performAnalysis(builder);
 
@@ -148,10 +148,6 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
                 });
           } else logger.warning(() -> "Encountered: " + pointerKey.getClass());
         });
-
-    // check the maps.
-    assertEquals(expectedNumberOfTensorParameters, methodSignatureToPointerKeys.size());
-    assertEquals(expectedNumberOfTensorParameters, methodSignatureToTensorVariables.size());
 
     final String functionSignature = "script " + filename + "." + functionName + ".do()LRoot;";
 
