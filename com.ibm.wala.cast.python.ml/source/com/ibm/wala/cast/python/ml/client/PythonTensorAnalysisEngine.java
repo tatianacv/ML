@@ -95,76 +95,13 @@ public class PythonTensorAnalysisEngine extends PythonAnalysisEngine<TensorTypeA
         if (inst instanceof SSAAbstractInvokeInstruction) {
           SSAAbstractInvokeInstruction ni = (SSAAbstractInvokeInstruction) inst;
 
-          // A queue of API calls starting from the right-most API from the selection operator,
-          // e.g., tf.random.uniform.
-          Queue<String> tensorFlowAPIQueue = new LinkedList<>();
-
-          if (!ni.isStatic()) {
-            int receiver = ni.getReceiver();
-            SSAInstruction receiverDefinition = du.getDef(receiver);
-
-            if (receiverDefinition instanceof PythonPropertyRead) {
-              PythonPropertyRead propertyRead = (PythonPropertyRead) receiverDefinition;
-
-              // are we calling a TensorFlow API?
-              if (isFromTensorFlow(propertyRead, du)) {
-                int memberRef = propertyRead.getMemberRef();
-                SSAInstruction memberRefDefinition = du.getDef(memberRef);
-
-                // if the member reference can't be found.
-                if (memberRefDefinition == null) {
-                  // look it up in the IR.
-                  IR ir = node.getIR();
-                  Value memberRefValue = ir.getSymbolTable().getValue(memberRef);
-
-                  // while a member ref value exists and it's a string constant.
-                  while (memberRefValue != null && memberRefValue.isStringConstant()) {
-                    // push the API onto the queue.
-                    tensorFlowAPIQueue.add(ir.getSymbolTable().getStringValue(memberRef));
-
-                    // go back one "level."
-                    memberRefValue = ir.getSymbolTable().getValue(--memberRef);
-                  }
-                }
-              }
-            }
-          }
-
-          // process the API "levels."
           if (ni.getException() != vn) {
-            if (!tensorFlowAPIQueue.isEmpty()) {
-              // pop the first element.
-              String tensorFlowAPI = tensorFlowAPIQueue.remove();
-
-              // Single-level APIs.
-              if (Objects.equal(tensorFlowAPI, "ones")
-                  || Objects.equal(tensorFlowAPI, "Variable")
-                  || Objects.equal(tensorFlowAPI, "zeros")
-                  || Objects.equal(tensorFlowAPI, "constant")
-                  || Objects.equal(tensorFlowAPI, "SparseTensor")
-                  || Objects.equal(tensorFlowAPI, "Tensor")
-                  || Objects.equal(tensorFlowAPI, "fill")
-                  || Objects.equal(tensorFlowAPI, "eye")
-                  || Objects.equal(tensorFlowAPI, "zeros_like")
-                  || Objects.equal(tensorFlowAPI, "one_hot")
-                  || Objects.equal(tensorFlowAPI, "convert_to_tensor")
-                  || Objects.equal(tensorFlowAPI, "range")) sources.add(src);
-              // Double-level APIs.
-              else if (Objects.equal(tensorFlowAPI, "uniform")) {
-                // Check the next "level".
-                if (tensorFlowAPIQueue.isEmpty())
-                  // not expecting this API call.
-                  throw new IllegalStateException("Encountered unexpected API call.");
-
-                tensorFlowAPI = tensorFlowAPIQueue.remove();
-
-                if (Objects.equal(tensorFlowAPI, "random")) sources.add(src);
-              }
-            } else if (ni.getCallSite()
+            if (ni.getCallSite()
                 .getDeclaredTarget()
                 .getName()
                 .toString()
-                .equals("read_data")) sources.add(src);
+                .equals("read_data"))
+            		sources.add(src);
           }
         }
       }
