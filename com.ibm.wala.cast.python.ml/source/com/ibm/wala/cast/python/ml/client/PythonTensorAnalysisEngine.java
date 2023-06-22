@@ -1,6 +1,5 @@
 package com.ibm.wala.cast.python.ml.client;
 
-import com.google.common.base.Objects;
 import com.ibm.wala.cast.lsp.AnalysisError;
 import com.ibm.wala.cast.python.client.PythonAnalysisEngine;
 import com.ibm.wala.cast.python.ir.PythonLanguage;
@@ -18,11 +17,9 @@ import com.ibm.wala.ipa.callgraph.propagation.PointsToSetVariable;
 import com.ibm.wala.ipa.callgraph.propagation.PropagationCallGraphBuilder;
 import com.ibm.wala.ipa.cha.IClassHierarchy;
 import com.ibm.wala.ssa.DefUse;
-import com.ibm.wala.ssa.IR;
 import com.ibm.wala.ssa.SSAAbstractInvokeInstruction;
 import com.ibm.wala.ssa.SSAInstruction;
 import com.ibm.wala.ssa.SSAInvokeInstruction;
-import com.ibm.wala.ssa.Value;
 import com.ibm.wala.types.MethodReference;
 import com.ibm.wala.types.Selector;
 import com.ibm.wala.types.TypeName;
@@ -34,9 +31,7 @@ import com.ibm.wala.util.collections.HashSetFactory;
 import com.ibm.wala.util.graph.Graph;
 import com.ibm.wala.util.graph.impl.SlowSparseNumberedGraph;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
 
 public class PythonTensorAnalysisEngine extends PythonAnalysisEngine<TensorTypeAnalysis> {
@@ -94,8 +89,8 @@ public class PythonTensorAnalysisEngine extends PythonAnalysisEngine<TensorTypeA
         if (inst instanceof SSAAbstractInvokeInstruction) {
           SSAAbstractInvokeInstruction ni = (SSAAbstractInvokeInstruction) inst;
 
-          if (ni.getCallSite().getDeclaredTarget().getName().toString().equals("read_data") && ni.getException() != vn)
-            		sources.add(src);
+          if (ni.getCallSite().getDeclaredTarget().getName().toString().equals("read_data")
+              && ni.getException() != vn) sources.add(src);
         }
       }
     }

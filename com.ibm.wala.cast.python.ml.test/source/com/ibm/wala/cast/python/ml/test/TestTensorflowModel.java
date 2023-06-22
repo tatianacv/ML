@@ -9,7 +9,6 @@ import com.ibm.wala.cast.python.ipa.callgraph.PythonSSAPropagationCallGraphBuild
 import com.ibm.wala.cast.python.ml.analysis.TensorTypeAnalysis;
 import com.ibm.wala.cast.python.ml.analysis.TensorVariable;
 import com.ibm.wala.classLoader.IMethod;
-import com.ibm.wala.examples.drivers.PDFTypeHierarchy;
 import com.ibm.wala.ipa.callgraph.CGNode;
 import com.ibm.wala.ipa.callgraph.CallGraph;
 import com.ibm.wala.ipa.callgraph.propagation.LocalPointerKey;
@@ -17,8 +16,6 @@ import com.ibm.wala.ipa.callgraph.propagation.PointerKey;
 import com.ibm.wala.ipa.cha.ClassHierarchyException;
 import com.ibm.wala.util.CancelException;
 import com.ibm.wala.util.WalaException;
-import com.ibm.wala.util.viz.DotUtil;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -70,21 +67,21 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     testTf2("tf2.py", "add", 2, 2, 3);
     testTf2("tf2b.py", "add", 2, 2, 3);
     testTf2("tf2c.py", "add", 2, 2, 3);
-//    testTf2("tf2d.py", "add", 2, 2, 3);
-//    testTf2("tf2e.py", "add", 2, 2, 3);
-//    testTf2("tf2f.py", "add", 2, 2, 3);
-//    testTf2("tf2g.py", "add", 2, 2, 3);
-//    testTf2("tf2h.py", "add", 2, 2, 3);
-//    testTf2("tf2i.py", "add", 2, 2, 3);
-//    testTf2("tf2j.py", "add", 2, 2, 3);
-//    testTf2("tf2k.py", "add", 2, 2, 3);
-//    testTf2("tf2l.py", "add", 2, 2, 3);
-//    testTf2("tf2m.py", "add", 2, 2, 3);
-//    // TODO: Uncomment below test when https://github.com/wala/ML/issues/49 is fixed.
-//    // testTf2("tf2n.py", "func2", 1, 2);
-//    testTf2("tf2o.py", "add", 2, 2, 3);
-//    testTf2("tf2p.py", "value_index", 2, 2, 3);
-//    testTf2("tf2q.py", "add", 2, 2, 3);
+    //    testTf2("tf2d.py", "add", 2, 2, 3);
+    //    testTf2("tf2e.py", "add", 2, 2, 3);
+    //    testTf2("tf2f.py", "add", 2, 2, 3);
+    //    testTf2("tf2g.py", "add", 2, 2, 3);
+    //    testTf2("tf2h.py", "add", 2, 2, 3);
+    //    testTf2("tf2i.py", "add", 2, 2, 3);
+    //    testTf2("tf2j.py", "add", 2, 2, 3);
+    //    testTf2("tf2k.py", "add", 2, 2, 3);
+    //    testTf2("tf2l.py", "add", 2, 2, 3);
+    //    testTf2("tf2m.py", "add", 2, 2, 3);
+    //    // TODO: Uncomment below test when https://github.com/wala/ML/issues/49 is fixed.
+    //    // testTf2("tf2n.py", "func2", 1, 2);
+    //    testTf2("tf2o.py", "add", 2, 2, 3);
+    //    testTf2("tf2p.py", "value_index", 2, 2, 3);
+    //    testTf2("tf2q.py", "add", 2, 2, 3);
   }
 
   private void testTf2(
@@ -102,7 +99,7 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     CAstCallGraphUtil.AVOID_DUMP = false;
     CAstCallGraphUtil.dumpCG(builder.getCFAContextInterpreter(), builder.getPointerAnalysis(), CG);
     System.err.println(CG);
-//    DotUtil.dotify(CG, null, PDFTypeHierarchy.DOT_FILE, "callgraph.pdf", "dot");
+    //    DotUtil.dotify(CG, null, PDFTypeHierarchy.DOT_FILE, "callgraph.pdf", "dot");
 
     TensorTypeAnalysis analysis = E.performAnalysis(builder);
 
