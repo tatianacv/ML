@@ -3,7 +3,6 @@ package com.ibm.wala.cast.python.ml.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import com.ibm.wala.cast.ipa.callgraph.CAstCallGraphUtil;
 import com.ibm.wala.cast.python.client.PythonAnalysisEngine;
 import com.ibm.wala.cast.python.ipa.callgraph.PythonSSAPropagationCallGraphBuilder;
 import com.ibm.wala.cast.python.ml.analysis.TensorTypeAnalysis;
@@ -39,11 +38,12 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     PythonSSAPropagationCallGraphBuilder builder = E.defaultCallGraphBuilder();
     CallGraph CG = builder.makeCallGraph(builder.getOptions());
 
-    //		CAstCallGraphUtil.AVOID_DUMP = false;
+    // CAstCallGraphUtil.AVOID_DUMP = false;
     //
-    //	CAstCallGraphUtil.dumpCG(((SSAPropagationCallGraphBuilder)builder).getCFAContextInterpreter(), builder.getPointerAnalysis(), CG);
+    // CAstCallGraphUtil.dumpCG(((SSAPropagationCallGraphBuilder)builder).getCFAContextInterpreter(),
+    // builder.getPointerAnalysis(), CG);
 
-    //		System.err.println(CG);
+    // System.err.println(CG);
 
     Collection<CGNode> nodes = getNodes(CG, "script tf1.py/model_fn");
     assert !nodes.isEmpty() : "model_fn should be called";
@@ -67,21 +67,21 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     testTf2("tf2.py", "add", 2, 3, 2, 3);
     testTf2("tf2b.py", "add", 2, 3, 2, 3);
     testTf2("tf2c.py", "add", 2, 4, 2, 3);
-    //    testTf2("tf2d.py", "add", 2, 2, 3);
-    //    testTf2("tf2e.py", "add", 2, 2, 3);
-    //    testTf2("tf2f.py", "add", 2, 2, 3);
-    //    testTf2("tf2g.py", "add", 2, 2, 3);
-    //    testTf2("tf2h.py", "add", 2, 2, 3);
-    //    testTf2("tf2i.py", "add", 2, 2, 3);
-    //    testTf2("tf2j.py", "add", 2, 2, 3);
-    //    testTf2("tf2k.py", "add", 2, 2, 3);
-    //    testTf2("tf2l.py", "add", 2, 2, 3);
-    //    testTf2("tf2m.py", "add", 2, 2, 3);
-    //    // TODO: Uncomment below test when https://github.com/wala/ML/issues/49 is fixed.
-    //    // testTf2("tf2n.py", "func2", 1, 2);
-    //    testTf2("tf2o.py", "add", 2, 2, 3);
-    //    testTf2("tf2p.py", "value_index", 2, 2, 3);
-    //    testTf2("tf2q.py", "add", 2, 2, 3);
+    // testTf2("tf2d.py", "add", 2, 2, 3);
+    // testTf2("tf2e.py", "add", 2, 2, 3);
+    // testTf2("tf2f.py", "add", 2, 2, 3);
+    // testTf2("tf2g.py", "add", 2, 2, 3);
+    // testTf2("tf2h.py", "add", 2, 2, 3);
+    // testTf2("tf2i.py", "add", 2, 2, 3);
+    // testTf2("tf2j.py", "add", 2, 2, 3);
+    // testTf2("tf2k.py", "add", 2, 2, 3);
+    // testTf2("tf2l.py", "add", 2, 2, 3);
+    // testTf2("tf2m.py", "add", 2, 2, 3);
+    // // TODO: Uncomment below test when https://github.com/wala/ML/issues/49 is fixed.
+    // // testTf2("tf2n.py", "func2", 1, 2);
+    // testTf2("tf2o.py", "add", 2, 2, 3);
+    // testTf2("tf2p.py", "value_index", 2, 2, 3);
+    // testTf2("tf2q.py", "add", 2, 2, 3);
     testTf2("tf2r.py", "add", 2, 3, 2, 3);
   }
 
@@ -98,10 +98,10 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     CallGraph CG = builder.makeCallGraph(builder.getOptions());
     assertNotNull(CG);
 
-    CAstCallGraphUtil.AVOID_DUMP = false;
-    CAstCallGraphUtil.dumpCG(builder.getCFAContextInterpreter(), builder.getPointerAnalysis(), CG);
-    System.err.println(CG);
-    //    DotUtil.dotify(CG, null, PDFTypeHierarchy.DOT_FILE, "callgraph.pdf", "dot");
+    // CAstCallGraphUtil.AVOID_DUMP = false;
+    // CAstCallGraphUtil.dumpCG(((SSAPropagationCallGraphBuilder)builder).getCFAContextInterpreter(),
+    // builder.getPointerAnalysis(), CG);
+    // System.err.println(CG);
 
     TensorTypeAnalysis analysis = E.performAnalysis(builder);
 
