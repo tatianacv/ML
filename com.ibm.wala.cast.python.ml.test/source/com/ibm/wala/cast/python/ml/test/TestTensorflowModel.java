@@ -64,9 +64,9 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
   @Test
   public void testTf2()
       throws IllegalArgumentException, CancelException, IOException, WalaException {
-    testTf2("tf2.py", "add", 2, 2, 3);
-    testTf2("tf2b.py", "add", 2, 2, 3);
-    testTf2("tf2c.py", "add", 2, 2, 3);
+    testTf2("tf2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2b.py", "add", 2, 3, 2, 3);
+    testTf2("tf2c.py", "add", 2, 4, 2, 3);
     //    testTf2("tf2d.py", "add", 2, 2, 3);
     //    testTf2("tf2e.py", "add", 2, 2, 3);
     //    testTf2("tf2f.py", "add", 2, 2, 3);
@@ -82,13 +82,14 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     //    testTf2("tf2o.py", "add", 2, 2, 3);
     //    testTf2("tf2p.py", "value_index", 2, 2, 3);
     //    testTf2("tf2q.py", "add", 2, 2, 3);
-    testTf2("tf2r.py", "add", 2, 2, 3);
+    testTf2("tf2r.py", "add", 2, 3, 2, 3);
   }
 
   private void testTf2(
       String filename,
       String functionName,
       int expectedNumberOfTensorParameters,
+      int expectedNumberOfTensorVariables,
       int... expectedValueNumbers)
       throws CancelException, IOException, WalaException {
     PythonAnalysisEngine<TensorTypeAnalysis> E = makeEngine(filename);
@@ -146,6 +147,10 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
                 });
           } else logger.warning(() -> "Encountered: " + pointerKey.getClass());
         });
+
+    // check the maps.
+    assertEquals(expectedNumberOfTensorVariables, methodSignatureToPointerKeys.size());
+    assertEquals(expectedNumberOfTensorVariables, methodSignatureToTensorVariables.size());
 
     final String functionSignature = "script " + filename + "." + functionName + ".do()LRoot;";
 
