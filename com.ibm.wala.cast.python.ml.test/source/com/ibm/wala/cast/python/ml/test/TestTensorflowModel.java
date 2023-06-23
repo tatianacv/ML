@@ -89,7 +89,7 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
       String functionName,
       int expectedNumberOfTensorParameters,
       int expectedNumberOfTensorVariables,
-      int... expectedValueNumbers)
+      int... expectedTensorParameterValueNumbers)
       throws ClassHierarchyException, CancelException, IOException {
     PythonAnalysisEngine<TensorTypeAnalysis> E = makeEngine(filename);
     PythonSSAPropagationCallGraphBuilder builder = E.defaultCallGraphBuilder();
@@ -165,8 +165,8 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
             .map(LocalPointerKey::getValueNumber)
             .collect(Collectors.toSet());
 
-    assertEquals(expectedValueNumbers.length, actualValueNumberSet.size());
-    Arrays.stream(expectedValueNumbers).forEach(ev -> actualValueNumberSet.contains(ev));
+    assertEquals(expectedTensorParameterValueNumbers.length, actualValueNumberSet.size());
+    Arrays.stream(expectedTensorParameterValueNumbers).forEach(ev -> actualValueNumberSet.contains(ev));
 
     // get the tensor variables for the function.
     Set<TensorVariable> functionTensors = methodSignatureToTensorVariables.get(functionSignature);
