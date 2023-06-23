@@ -58,6 +58,39 @@
         <new def="ones" class="Ltensorflow/functions/ones" />
         <putfield class="LRoot" field="ones" fieldType="LRoot" ref="x" value="ones" />
 
+        <new def="Variable" class="Ltensorflow/functions/Variable" />
+        <putfield class="LRoot" field="Variable" fieldType="LRoot" ref="x" value="Variable" />
+
+        <new def="constant" class="Ltensorflow/functions/constant" />
+        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="x" value="constant" />
+
+        <new def="zeros" class="Ltensorflow/functions/zeros" />
+        <putfield class="LRoot" field="zeros" fieldType="LRoot" ref="x" value="zeros" />
+
+        <new def="SparseTensor" class="Ltensorflow/functions/SparseTensor" />
+        <putfield class="LRoot" field="SparseTensor" fieldType="LRoot" ref="x" value="SparseTensor" />
+
+        <new def="fill" class="Ltensorflow/functions/fill" />
+        <putfield class="LRoot" field="fill" fieldType="LRoot" ref="x" value="fill" />
+
+        <new def="zeros_like" class="Ltensorflow/functions/zeros_like" />
+        <putfield class="LRoot" field="zeros_like" fieldType="LRoot" ref="x" value="zeros_like" />
+
+        <new def="one_hot" class="Ltensorflow/functions/one_hot" />
+        <putfield class="LRoot" field="one_hot" fieldType="LRoot" ref="x" value="one_hot" />
+
+        <new def="convert_to_tensor" class="Ltensorflow/functions/convert_to_tensor" />
+        <putfield class="LRoot" field="convert_to_tensor" fieldType="LRoot" ref="x" value="convert_to_tensor" />
+
+        <new def="range" class="Ltensorflow/functions/range" />
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="x" value="range" />
+
+        <new def="Tensor" class="Ltensorflow/functions/Tensor" />
+        <putfield class="LRoot" field="Tensor" fieldType="LRoot" ref="x" value="Tensor" />
+
+        <new def="eye" class="Ltensorflow/functions/eye" />
+        <putfield class="LRoot" field="eye" fieldType="LRoot" ref="x" value="eye" />
+
         <new def="conv2d" class="Ltensorflow/functions/conv2d" />
         <putfield class="LRoot" field="conv2d" fieldType="LRoot" ref="x" value="conv2d" />
         <putfield class="LRoot" field="conv2d" fieldType="LRoot" ref="nn" value="conv2d" />
@@ -171,6 +204,127 @@
           <return value="x" />
         </method>
         <method name="do" descriptor="()LRoot;" numArgs="3" paramNames="shape dtype name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="Variable" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/Variable" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="12" paramNames="initial_value trainable validate_shape caching_device name variable_def dtype import_scope constraint synchronization aggregation shape">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="constant" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/constant" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="4" paramNames="value dtype shape name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="zeros" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/zeros" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="3" paramNames="shape dtype name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="SparseTensor" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/sparse/SparseTensor" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="3" paramNames="indices values dense_shape">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="fill" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/fill" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="3" paramNames="dims value name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="zeros_like" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/zeros_like" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="3" paramNames="input dtype name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="one_hot" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/one_hot" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="7" paramNames="indices depth on_value off_value axis dtype name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="convert_to_tensor" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/convert_to_tensor" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="4" paramNames="value dtype dtype_hint name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="range" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/range" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="4" paramNames="limit delta dtype name">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="Tensor" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/Tensor" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="3" paramNames="op value_index dtype">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
+        </method>
+      </class>
+
+      <class name="eye" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Ltensorflow/function/eye" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="5" paramNames="num_rows num_columns batch_shape dtype name">
           <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
           <return value="x" />
         </method>
