@@ -14,7 +14,6 @@ import com.ibm.wala.ipa.callgraph.propagation.LocalPointerKey;
 import com.ibm.wala.ipa.callgraph.propagation.PointerKey;
 import com.ibm.wala.ipa.cha.ClassHierarchyException;
 import com.ibm.wala.util.CancelException;
-import com.ibm.wala.util.WalaException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -63,7 +62,7 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
 
   @Test
   public void testTf2()
-      throws IllegalArgumentException, CancelException, IOException, WalaException {
+      throws ClassHierarchyException, IllegalArgumentException, CancelException, IOException {
     testTf2("tf2.py", "add", 2, 3, 2, 3);
     testTf2("tf2b.py", "add", 2, 3, 2, 3);
     testTf2("tf2c.py", "add", 2, 4, 2, 3);
