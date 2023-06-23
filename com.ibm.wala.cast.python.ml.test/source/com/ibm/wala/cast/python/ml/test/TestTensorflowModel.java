@@ -165,7 +165,8 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
             .collect(Collectors.toSet());
 
     assertEquals(expectedTensorParameterValueNumbers.length, actualValueNumberSet.size());
-    Arrays.stream(expectedTensorParameterValueNumbers).forEach(ev -> actualValueNumberSet.contains(ev));
+    Arrays.stream(expectedTensorParameterValueNumbers)
+        .forEach(ev -> actualValueNumberSet.contains(ev));
 
     // get the tensor variables for the function.
     Set<TensorVariable> functionTensors = methodSignatureToTensorVariables.get(functionSignature);
