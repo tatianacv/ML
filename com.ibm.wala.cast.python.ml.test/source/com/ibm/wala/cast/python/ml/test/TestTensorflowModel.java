@@ -88,7 +88,7 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
       String filename,
       String functionName,
       int expectedNumberOfTensorParameters,
-      int expectedTensorParameterValueNumbers,
+      int expectedNumberOfTensorVariables,
       int... expectedValueNumbers)
       throws ClassHierarchyException, CancelException, IOException {
     PythonAnalysisEngine<TensorTypeAnalysis> E = makeEngine(filename);
@@ -148,8 +148,8 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
         });
 
     // check the maps.
-    assertEquals(expectedTensorParameterValueNumbers, methodSignatureToPointerKeys.size());
-    assertEquals(expectedTensorParameterValueNumbers, methodSignatureToTensorVariables.size());
+    assertEquals(expectedNumberOfTensorVariables, methodSignatureToPointerKeys.size());
+    assertEquals(expectedNumberOfTensorVariables, methodSignatureToTensorVariables.size());
 
     final String functionSignature = "script " + filename + "." + functionName + ".do()LRoot;";
 
