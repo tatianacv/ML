@@ -90,7 +90,7 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
       int expectedNumberOfTensorParameters,
       int expectedNumberOfTensorVariables,
       int... expectedValueNumbers)
-      throws CancelException, IOException, WalaException {
+      throws ClassHierarchyException, CancelException, IOException {
     PythonAnalysisEngine<TensorTypeAnalysis> E = makeEngine(filename);
     PythonSSAPropagationCallGraphBuilder builder = E.defaultCallGraphBuilder();
 

@@ -35,17 +35,18 @@ public class TestTensorflowModelParsing extends TestPythonMLCallGraphShape {
   public void testParsing()
       throws ClassHierarchyException, IllegalArgumentException, CancelException, IOException {
     final String filename = "parsing_test.py";
+    final int expectedTensorParameterValueNumbers = 3;
     PythonAnalysisEngine<TensorTypeAnalysis> E = makeEngine(filename);
     PythonSSAPropagationCallGraphBuilder builder = E.defaultCallGraphBuilder();
 
     CallGraph CG = builder.makeCallGraph(builder.getOptions());
     assertNotNull(CG);
 
-    //		CAstCallGraphUtil.AVOID_DUMP = false;
-    //		CAstCallGraphUtil.dumpCG(builder.getCFAContextInterpreter(), builder.getPointerAnalysis(),
+    // CAstCallGraphUtil.AVOID_DUMP = false;
+    // CAstCallGraphUtil.dumpCG(builder.getCFAContextInterpreter(), builder.getPointerAnalysis(),
     // CG);
 
-    //		System.err.println(CG);
+    // System.err.println(CG);
 
     TensorTypeAnalysis analysis = E.performAnalysis(builder);
 
@@ -80,7 +81,7 @@ public class TestTensorflowModelParsing extends TestPythonMLCallGraphShape {
         });
 
     // we should have 3 methods.
-    assertEquals(3, methodSignatureToPointerKeys.size());
+    assertEquals(expectedTensorParameterValueNumbers, methodSignatureToPointerKeys.size());
 
     final String addFunctionSignature = "script " + filename + ".add.do()LRoot;";
 
