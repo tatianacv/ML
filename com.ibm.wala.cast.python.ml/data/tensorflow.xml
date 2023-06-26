@@ -39,6 +39,12 @@
         <putfield class="LRoot" field="layers" fieldType="LRoot" ref="x" value="layers" />
         <new def="random" class="Lobject" />
         <putfield class="LRoot" field="random" fieldType="LRoot" ref="x" value="random" />
+        <new def="sparse" class="Lobject" />
+        <putfield class="LRoot" field="sparse" fieldType="LRoot" ref="x" value="sparse" />
+        <new def="linalg" class="Lobject" />
+        <putfield class="LRoot" field="linalg" fieldType="LRoot" ref="x" value="linalg" />
+        <new def="keras" class="Lobject" />
+        <putfield class="LRoot" field="keras" fieldType="LRoot" ref="x" value="keras" />
 
         <new def="app" class="Lobject" />
         <putfield class="LRoot" field="app" fieldType="LRoot" ref="x" value="app" />
@@ -71,6 +77,7 @@
 
         <new def="SparseTensor" class="Ltensorflow/functions/SparseTensor" />
         <putfield class="LRoot" field="SparseTensor" fieldType="LRoot" ref="x" value="SparseTensor" />
+        <putfield class="LRoot" field="SparseTensor" fieldType="LRoot" ref="sparse" value="SparseTensor" />
 
         <new def="fill" class="Ltensorflow/functions/fill" />
         <putfield class="LRoot" field="fill" fieldType="LRoot" ref="x" value="fill" />
@@ -92,9 +99,13 @@
 
         <new def="eye" class="Ltensorflow/functions/eye" />
         <putfield class="LRoot" field="eye" fieldType="LRoot" ref="x" value="eye" />
+        <putfield class="LRoot" field="eye" fieldType="LRoot" ref="linalg" value="eye" />
 
         <new def="uniform" class="Ltensorflow/functions/uniform" />
         <putfield class="LRoot" field="uniform" fieldType="LRoot" ref="random" value="uniform" />
+
+        <new def="Input" class="Ltensorflow/functions/Input" />
+        <putfield class="LRoot" field="Input" fieldType="LRoot" ref="keras" value="Input" />
 
         <new def="conv2d" class="Ltensorflow/functions/conv2d" />
         <putfield class="LRoot" field="conv2d" fieldType="LRoot" ref="x" value="conv2d" />
@@ -198,7 +209,27 @@
       </method>
     </class>
 
+    <class name="keras" allocatable="true">
+      <method name="import" static="true" descriptor="()Lkeras;">
+        <new def="x" class="Lkeras" />
+
+      <new def="engine" class="Lobject" />
+        <putfield class="LRoot" field="engine" fieldType="LRoot" ref="x" value="engine" />
+
+      <new def="input_layer" class="Lobject" />
+        <putfield class="LRoot" field="input_layer" fieldType="LRoot" ref="engine" value="input_layer" />
+
+      <new def="Input" class="Lkeras/engine/input_layer/Input" />
+        <putfield class="LRoot" field="Input" fieldType="LRoot" ref="input_layer" value="Input" />
+      <return value="x" />
+      </method>
+    </class>
+
     <package name="tensorflow/objects">
+      <class name="feature" allocatable="true" />
+    </package>
+
+    <package name="keras/objects">
       <class name="feature" allocatable="true" />
     </package>
 
@@ -687,6 +718,19 @@
           <new def="y" class="Ltensorflow/examples/tutorials/mnist/read_data_sets" />
           <putfield class="Ltensorflow/examples/tutorials/mnist" field="input_data" fieldType="LRoot" ref="arg0" value="x" />
           <putfield class="Ltensorflow/examples/tutorials/mnist/input_data" field="read_data_sets" fieldType="LRoot" ref="x" value="y" />
+        </method>
+      </class>
+    </package>
+
+    <package name="Lkeras/engine/input_layer/Input">
+    <class name="Input" allocatable="true">
+        <method name="read_data" descriptor="()LRoot;">
+          <new def="x" class="Lkeras/engine/input_layer/Input" />
+          <return value="x" />
+        </method>
+        <method name="do" descriptor="()LRoot;" numArgs="8" paramNames="shape batch_size name dtype sparse tensor ragged type_spec">
+          <call class="LRoot" name="read_data" descriptor="()LRoot;" type="virtual" arg0="arg0" def="x" />
+          <return value="x" />
         </method>
       </class>
     </package>
