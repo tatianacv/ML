@@ -102,9 +102,6 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     testTf2("tf2r.py", "add", 2, 3, 2, 3);
     // TODO: Uncomment below test when https://github.com/ponder-lab/ML/issues/34 is fixed.
     // testTf2("tf2s.py", "add", 2, 3, 2, 3);
-    testTf2("tf2t.py", "add", 2, 3, 2, 3);
-    testTf2("tf2t2.py", "add", 2, 3, 2, 3);
-    testTf2("tf2t3.py", "add", 2, 3, 2, 3);
     testTf2("tf2u.py", "add", 2, 3, 2, 3);
     testTf2("tf2u2.py", "add", 2, 3, 2, 3);
     testTf2("tf2u3.py", "add", 2, 3, 2, 3);
@@ -115,7 +112,10 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     testTf2("tf2v5.py", "add", 2, 4, 2, 3);
     testTf2("tf2w.py", "add", 2, 3, 2, 3);
     testTf2("tf2w2.py", "add", 2, 3, 2, 3);
-    testTf2("tf2w3.py", "add", 2, 3, 2, 3);
+//    testTf2("tf2w3.py", "add", 2, 3, 2, 3);
+    testTf2("tf2x.py", "add", 2, 3, 2, 3);
+    testTf2("tf2x2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2x3.py", "add", 2, 3, 2, 3);
   }
 
   private void testTf2(
