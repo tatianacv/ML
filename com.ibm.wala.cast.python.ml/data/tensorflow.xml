@@ -166,10 +166,22 @@
         <putfield class="LRoot" field="uniform" fieldType="LRoot" ref="random" value="uniform" />
         <putfield class="LRoot" field="random_uniform" fieldType="LRoot" ref="random_ops" value="uniform" />
 
+        <new def="range" class="Ltensorflow/functions/range" />
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="x" value="range" />
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="math_ops" value="range"/>
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged" value="range"/>
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged_math_ops" value="range"/>
+
         <new def="eye" class="Ltensorflow/functions/eye" />
         <putfield class="LRoot" field="eye" fieldType="LRoot" ref="x" value="eye" />
         <putfield class="LRoot" field="eye" fieldType="LRoot" ref="linalg" value="eye" />
         <putfield class="LRoot" field="eye" fieldType="LRoot" ref="linalg_ops" value="eye" />
+
+        <new def="constant" class="Ltensorflow/functions/constant" />
+        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="x" value="constant" />
+        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="constant_op" value="constant" />
+        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged" value="constant"/>
+        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged_factory_ops" value="constant"/>
 
         <new def="SparseTensor" class="Ltensorflow/functions/SparseTensor" />
         <putfield class="LRoot" field="SparseTensor" fieldType="LRoot" ref="x" value="SparseTensor" />
@@ -184,17 +196,6 @@
         <putfield class="LRoot" field="Tensor" fieldType="LRoot" ref="x" value="Tensor" />
         <putfield class="LRoot" field="Tensor" fieldType="LRoot" ref="ops" value="Tensor" />
 
-        <new def="constant" class="Ltensorflow/functions/constant" />
-        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="x" value="constant" />
-        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="constant_op" value="constant" />
-        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged" value="constant"/>
-        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged_factory_ops" value="constant"/>
-
-        <new def="range" class="Ltensorflow/functions/range" />
-        <putfield class="LRoot" field="range" fieldType="LRoot" ref="x" value="range" />
-        <putfield class="LRoot" field="range" fieldType="LRoot" ref="math_ops" value="range"/>
-        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged" value="range"/>
-        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged_math_ops" value="range"/>
         <return value="x" />
       </method>
     </class>
