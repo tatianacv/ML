@@ -104,7 +104,7 @@
 
         <new def="ragged" class="Lobject" />
         <putfield class="LRoot" field="ragged" fieldType="LRoot" ref="x" value="ragged" />
-        <putfield class="LRoot" field="ragged" fieldType="LRoot" ref="ops" value="ragged"/>
+        <putfield class="LRoot" field="ragged" fieldType="LRoot" ref="ops" value="ragged" />
 
         <new def="array_ops" class="Lobject" />
         <putfield class="LRoot" field="array_ops" fieldType="LRoot" ref="ops" value="array_ops" />
@@ -185,11 +185,11 @@
 
         <new def="range" class="Ltensorflow/functions/range" />
         <putfield class="LRoot" field="range" fieldType="LRoot" ref="x" value="range" />
-        <putfield class="LRoot" field="range" fieldType="LRoot" ref="math_ops" value="range"/>
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="math_ops" value="range" />
 
         <new def="ragged_range" class="Ltensorflow/functions/ragged_range" />
-        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged" value="ragged_range"/>
-        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged_math_ops" value="ragged_range"/>
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged" value="ragged_range" />
+        <putfield class="LRoot" field="range" fieldType="LRoot" ref="ragged_math_ops" value="ragged_range" />
 
         <new def="eye" class="Ltensorflow/functions/eye" />
         <putfield class="LRoot" field="eye" fieldType="LRoot" ref="x" value="eye" />
@@ -201,8 +201,8 @@
         <putfield class="LRoot" field="constant" fieldType="LRoot" ref="constant_op" value="constant" />
 
         <new def="ragged_constant" class="Ltensorflow/functions/ragged_constant" />
-        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged" value="ragged_constant"/>
-        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged_factory_ops" value="ragged_constant"/>
+        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged" value="ragged_constant" />
+        <putfield class="LRoot" field="constant" fieldType="LRoot" ref="ragged_factory_ops" value="ragged_constant" />
 
         <new def="SparseTensor" class="Ltensorflow/functions/SparseTensor" />
         <putfield class="LRoot" field="SparseTensor" fieldType="LRoot" ref="x" value="SparseTensor" />
@@ -257,15 +257,15 @@
       <method name="import" static="true" descriptor="()Lkeras;">
         <new def="x" class="Lkeras" />
 
-      <new def="engine" class="Lobject" />
+        <new def="engine" class="Lobject" />
         <putfield class="LRoot" field="engine" fieldType="LRoot" ref="x" value="engine" />
 
-      <new def="input_layer" class="Lobject" />
+        <new def="input_layer" class="Lobject" />
         <putfield class="LRoot" field="input_layer" fieldType="LRoot" ref="engine" value="input_layer" />
 
-      <new def="Input" class="Lkeras/engine/input_layer/Input" />
+        <new def="Input" class="Lkeras/engine/input_layer/Input" />
         <putfield class="LRoot" field="Input" fieldType="LRoot" ref="input_layer" value="Input" />
-      <return value="x" />
+        <return value="x" />
       </method>
     </class>
 
