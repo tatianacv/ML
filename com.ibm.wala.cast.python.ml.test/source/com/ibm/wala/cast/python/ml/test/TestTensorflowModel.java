@@ -74,6 +74,9 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     testTf2("tf2e2.py", "add", 2, 4, 2, 3);
     testTf2("tf2e3.py", "add", 2, 3, 2, 3);
     testTf2("tf2e4.py", "add", 2, 4, 2, 3);
+    testTf2("tf2e5.py", "add", 2, 3, 2, 3);
+    testTf2("tf2e6.py", "add", 2, 3, 2, 3);
+    testTf2("tf2e7.py", "add", 2, 3, 2, 3);
     testTf2("tf2f.py", "add", 2, 3, 2, 3);
     testTf2("tf2f2.py", "add", 2, 4, 2, 3);
     testTf2("tf2f3.py", "add", 2, 4, 2, 3);
@@ -100,8 +103,9 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     testTf2("tf2p2.py", "value_index", 2, 4, 2, 3);
     testTf2("tf2q.py", "add", 2, 3, 2, 3);
     testTf2("tf2r.py", "add", 2, 3, 2, 3);
-    // TODO: Uncomment below test when https://github.com/ponder-lab/ML/issues/34 is fixed.
+    // TODO: Uncomment below test when https://github.com/wala/ML/issues/65 is fixed.
     // testTf2("tf2s.py", "add", 2, 3, 2, 3);
+    testTf2("tf2t.py", "add", 2, 3, 2, 3);
     testTf2("tf2u.py", "add", 2, 3, 2, 3);
     testTf2("tf2u2.py", "add", 2, 3, 2, 3);
     testTf2("tf2u3.py", "add", 2, 3, 2, 3);
@@ -137,6 +141,8 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     // System.err.println(CG);
 
     TensorTypeAnalysis analysis = E.performAnalysis(builder);
+
+    logger.info("Tensor analysis: " + analysis);
 
     // Create a mapping from method signatures to pointer keys.
     Map<String, Set<LocalPointerKey>> methodSignatureToPointerKeys = new HashMap<>();
