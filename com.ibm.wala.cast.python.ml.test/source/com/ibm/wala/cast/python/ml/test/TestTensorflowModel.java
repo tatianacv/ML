@@ -143,6 +143,48 @@ public class TestTensorflowModel extends TestPythonMLCallGraphShape {
     testTf2("tf2y4.py", "add", 2, 3, 2, 3);
     testTf2("tf2y5.py", "add", 2, 3, 2, 3);
     testTf2("tf2y6.py", "add", 2, 3, 2, 3);
+    testTf2("tf2z.py", "add", 2, 5, 2, 3);
+    testTf2("tf2z2.py", "add", 2, 5, 2, 3);
+    testTf2("tf2z3.py", "add", 2, 5, 2, 3);
+    testTf2("tf2z4.py", "add", 2, 5, 2, 3);
+    testTf2("tf2aa.py", "add", 2, 3, 2, 3);
+    testTf2("tf2aa2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2aa3.py", "add", 2, 3, 2, 3);
+    testTf2("tf2aa4.py", "add", 2, 3, 2, 3);
+    testTf2("tf2aa5.py", "add", 2, 3, 2, 3);
+    testTf2("tf2aa6.py", "add", 2, 3, 2, 3);
+    testTf2("tf2aa7.py", "add", 2, 3, 2, 3);
+    testTf2("tf2aa8.py", "add", 2, 3, 2, 3);
+    testTf2("tf2bb.py", "add", 2, 5, 2, 3);
+    testTf2("tf2bb2.py", "add", 2, 5, 2, 3);
+    testTf2("tf2bb3.py", "add", 2, 5, 2, 3);
+    testTf2("tf2bb4.py", "add", 2, 5, 2, 3);
+    testTf2("tf2cc.py", "add", 2, 3, 2, 3);
+    testTf2("tf2cc2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2cc3.py", "add", 2, 3, 2, 3);
+    testTf2("tf2dd.py", "add", 2, 3, 2, 3);
+    testTf2("tf2dd2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ee.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ee2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ff.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ff2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2gg.py", "add", 2, 3, 2, 3);
+    testTf2("tf2gg2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2gg3.py", "add", 2, 3, 2, 3);
+    testTf2("tf2hh.py", "add", 2, 3, 2, 3);
+    testTf2("tf2hh2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2hh3.py", "add", 2, 3, 2, 3);
+    testTf2("tf2hh4.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ii.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ii2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ii3.py", "add", 2, 3, 2, 3);
+    testTf2("tf2jj.py", "add", 2, 3, 2, 3);
+    testTf2("tf2jj2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2kk.py", "add", 2, 3, 2, 3);
+    testTf2("tf2kk2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ll.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ll2.py", "add", 2, 3, 2, 3);
+    testTf2("tf2ll3.py", "add", 2, 3, 2, 3);
   }
 
   private void testTf2(
